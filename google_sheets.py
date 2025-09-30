@@ -3,6 +3,14 @@ from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 from config import GOOGLE_SHEET_ID, SHEET_NAME, CREDENTIALS_FILE
 
+import os
+import json
+from oauth2client.service_account import ServiceAccountCredentials
+
+creds_dict = json.loads(os.environ["GOOGLE_CREDENTIALS"])
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+
+
 # Autenticação com Google Sheets
 def autenticar_google_sheets():
     scope = ['https://spreadsheets.google.com/feeds',
@@ -22,4 +30,5 @@ def carregar_dados():
 def salvar_dado(novo_dado):
     client = autenticar_google_sheets()
     sheet = client.open_by_key(GOOGLE_SHEET_ID).worksheet(SHEET_NAME)
+
     sheet.append_row(novo_dado)

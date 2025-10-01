@@ -10,7 +10,7 @@ def autenticar_google_sheets():
              'https://www.googleapis.com/auth/drive']
 
     # Verifica se está rodando com variável de ambiente (ex: Streamlit Cloud)
-    creds_dict = json.loads(os.environ["GOOGLE_CREDENTIALS"])
+    creds = json.loads(os.environ["GOOGLE_CREDENTIALS"])
     
     client = gspread.authorize(creds)
     return client
@@ -25,4 +25,5 @@ def salvar_dado(novo_dado):
     client = autenticar_google_sheets()
     sheet = client.open_by_key(GOOGLE_SHEET_ID).worksheet(SHEET_NAME)
     sheet.append_row(novo_dado)
+
 

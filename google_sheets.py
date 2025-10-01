@@ -2,6 +2,7 @@ import gspread
 import pandas as pd
 import os
 import json
+import streamlit as st
 from oauth2client.service_account import ServiceAccountCredentials
 from google.oauth2 import service_account as sa
 from config import GOOGLE_SHEET_ID, SHEET_NAME, CREDENTIALS_FILE
@@ -28,6 +29,7 @@ def salvar_dado(novo_dado):
     client = autenticar_google_sheets()
     sheet = client.open_by_key(GOOGLE_SHEET_ID).worksheet(SHEET_NAME)
     sheet.append_row(novo_dado)
+
 
 
 

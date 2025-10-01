@@ -8,13 +8,13 @@ import streamlit as st
 #st.success(str_json)
 
 # Lê credenciais do st.secrets
-    creds_dict = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
+creds_dict = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
 
-    # Cria objeto de credenciais
-    creds = Credentials.from_service_account_info(
-        creds_dict,
-        scopes=["https://www.googleapis.com/auth/spreadsheets",
-                "https://www.googleapis.com/auth/drive"]
-    )
+# Cria objeto de credenciais
+creds = Credentials.from_service_account_info(
+    creds_dict,
+    scopes=["https://www.googleapis.com/auth/spreadsheets",
+            "https://www.googleapis.com/auth/drive"]
+)
 
-    client = gspread.authorize(creds)
+client = gspread.authorize(creds)

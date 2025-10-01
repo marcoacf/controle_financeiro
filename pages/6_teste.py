@@ -18,4 +18,3 @@ creds = sa.Credentials.from_service_account_info(
             "https://www.googleapis.com/auth/drive"]
 )
 
-client = gspread.authorize(creds)

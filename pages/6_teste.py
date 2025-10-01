@@ -1,6 +1,7 @@
 import os
 import json
 import streamlit as st
+from google.oauth2 import service_account as sa
 # Verifica se está rodando com variável de ambiente (ex: Streamlit Cloud)
 #str_cred = os.environ["GOOGLE_CREDENTIALS"]
 #st.success(str_cred)
@@ -11,7 +12,7 @@ import streamlit as st
 creds_dict = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
 
 # Cria objeto de credenciais
-creds = Credentials.from_service_account_info(
+creds = sa.Credentials.from_service_account_info(
     creds_dict,
     scopes=["https://www.googleapis.com/auth/spreadsheets",
             "https://www.googleapis.com/auth/drive"]
